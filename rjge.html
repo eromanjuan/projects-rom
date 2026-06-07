@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="icon" href="images/icon.png">
+    <title>Roman Juan Eugenio I | Portfolio</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            /* Default Dark Theme Variables */
+            --bg-main: #050814;
+            --bg-secondary: #0b132b;
+            --neon-blue: #00f0ff;
+            --neon-purple: #8a2be2;
+            --text-main: #e0e6ed;
+            --text-muted: #8b9bb4;
+            --card-bg: rgba(11, 19, 43, 0.6);
+            --card-border: rgba(0, 240, 255, 0.15);
+            --star-color: #ffffff;
+            --star-opacity: 0.3;
+            --title-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-purple);
+        }
+
+        /* Light Theme Override Variables */
+        body.light-theme {
+            --bg-main: #e2e8f0;
+            --bg-secondary: #f8fafc;
+            --neon-blue: #0284c7; 
+            --neon-purple: #7e22ce; 
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(2, 132, 199, 0.3);
+            --star-color: #000000;
+            --star-opacity: 0.05;
+            --title-shadow: none;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; 
+        }
+
+        body {
+            background-color: var(--bg-main);
+            background-image: radial-gradient(circle at 50% 0%, var(--bg-secondary) 0%, var(--bg-main) 70%);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* Interactive Cursor */
+        .cursor-glow {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.8) 0%, rgba(0, 240, 255, 0) 70%);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            mix-blend-mode: screen;
+            transition: width 0.2s, height 0.2s, background 0.2s;
+        }
+
+        body.light-theme .cursor-glow {
+            mix-blend-mode: multiply; 
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.4) 0%, rgba(2, 132, 199, 0) 70%);
+        }
+
+        /* Starry Background Effect */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: transparent;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, var(--star-color), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 40px 70px, var(--star-color), rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, var(--star-color), rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, var(--star-color), rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            opacity: var(--star-opacity);
+            animation: twinkle 5s infinite alternate;
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: calc(var(--star-opacity) - 0.1); }
+            100% { opacity: calc(var(--star-opacity) + 0.2); }
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px 50px;
+            border-bottom: 1px solid var(--card-border);
+            transition: border-color 0.5s ease;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-shadow: var(--title-shadow);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            transition: color 0.5s ease, text-shadow 0.5s ease;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--neon-blue);
+            letter-spacing: 1px;
+            margin-bottom: 25px; /* Added spacing to separate from the button */
+            transition: color 0.5s ease;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            display: inline-block;
+            border-bottom: 2px solid var(--neon-blue);
+            padding-bottom: 5px;
+            transition: color 0.5s ease, border-color 0.5s ease;
+        }
+
+        /* Glassmorphism Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue));
+            transition: all 0.5s ease;
+        }
+
+        .card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card h3 {
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.5s ease;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: rgba(0, 240, 255, 0.05);
+            color: var(--neon-blue);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--card-border);
+            transition: all 0.5s ease;
+        }
+        
+        body.light-theme .skill-tag {
+            background: rgba(2, 132, 199, 0.1);
+        }
+
+        /* Expandable Project Elements */
+        .expandable {
+            cursor: none;
+        }
+
+        .expand-icon {
+            font-size: 1rem;
+            transition: transform 0.4s ease;
+            color: var(--neon-purple);
+        }
+
+        .expandable.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .project-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .expandable.expanded .project-details {
+            max-height: 1000px;
+            opacity: 1;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .project-img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Keeps images uniform without stretching */
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--neon-blue);
+            z-index: 10;
+            position: relative;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Specific style for the Download CV Button so it doesn't span 100% width */
+        .cv-btn {
+            width: auto;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px; /* Optional: adds a slightly rounder pill shape */
+        }
+        
+        body.light-theme .btn {
+            background: rgba(2, 132, 199, 0.1);
+        }
+
+        .btn:hover {
+            background: var(--neon-blue);
+            color: var(--bg-secondary);
+            text-shadow: none;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            margin-top: 40px;
+            transition: border-color 0.5s ease;
+        }
+
+        a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            transition: text-shadow 0.3s;
+        }
+
+        a:hover {
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        body.light-theme a:hover {
+            text-shadow: none;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" id="theme-btn">☀️</button>
+
+    <div class="stars"></div>
+    
+    <div class="cursor-glow" id="cursor"></div>
+
+    <header>
+        <h1>ROMAN JUAN G. EUGENIO I</h1>
+        <p class="subtitle">COMPUTER SCIENCE PROFESSIONAL & IT SPECIALIST</p>
+        
+        <a href="cv_eugenio_romanjuani_g.pdf" download="cv_eugenio_romanjuani_g.pdf" class="btn cv-btn">Download CV</a>
+
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>Mission Control</h2>
+            <div class="card">
+                <p>Innovative educator and IT specialist based in Talavera, Nueva Ecija, Philippines. With a unique blend of technical mastery and creative vision, I specialize in theoretical Computer Science instruction, hardware/network support, and creating dynamic web applications.</p>
+                <div class="skills-container">
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">HTML/CSS/JS</span>
+                    <span class="skill-tag">System Development</span>
+                    <span class="skill-tag">IT Support</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects & Systems</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Click on a project to expand and view system details.</p>
+            
+            <div class="grid">
+                
+                <div class="card expandable" onclick="toggleCard(event, this)">
+                    <h3>VESSCORE Tabulation <span class="expand-icon">▼</span></h3>
+                    <p><strong>Pageant & Contest Tabulation System</strong></p>
+                    
+                    <div class="project-details">
+                        <p>A specialized, highly accurate tabulation platform engineered specifically for beauty pageants, coronation nights, and live competitive events. It ensures real-time score calculation, seamless data handling, and automated leaderboards for judges and audiences.</p>
+                        <img src="images/esscore.jpg" alt="VESSCORE System Screenshot" class="project-img">
+                        <a href="https://mysundayproject-50d65.web.app/vesscore.html" target="_blank" class="btn">Launch System</a>
+                    </div>
+                </div>
+
+                <div class="card expandable" onclick="toggleCard(event, this)">
+                    <h3>CORE HUB <span class="expand-icon">▼</span></h3>
+                    <p><strong>Student Social Media & Utility Platform</strong></p>
+                    
+                    <div class="project-details">
+                        <p>An all-in-one digital campus ecosystem designed to enhance student life. Features include a built-in GWA (General Weighted Average) calculator, integrated mini-games, dynamic campus chatrooms, and community forums tailored for student engagement.</p>
+                        <img src="images/ch.png" alt="CORE HUB System Screenshot" class="project-img">
+                        <a href="https://mysundayproject-50d65.web.app/" target="_blank" class="btn">Launch Platform</a>
+                    </div>
+                </div>
+
+                <div class="card expandable" onclick="toggleCard(event, this)">
+                    <h3>Quek: Queueing Kiosk <span class="expand-icon">▼</span></h3>
+                    <p><strong>Award-Winning Institutional Queueing System</strong></p>
+                    
+                    <div class="project-details">
+                        <p>My "Innovative Thesis Award" winning project for Core Gateway College, Inc. An advanced, user-friendly kiosk system designed to streamline, log, and manage every school transaction efficiently, drastically reducing wait times and improving the overall campus experience.</p>
+                        <img src="images/6.png" class="project-img">
+                        <a href="https://quek.cgci.edu.ph/" target="_blank" class="btn">Launch Kiosk</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Visual Archives</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;"></p>
+            <div class="gallery-grid">
+                <img src="images/1.jpg" alt="Gallery Work 1" class="gallery-img">
+                <img src="images/2.jpg" alt="Gallery Work 2" class="gallery-img">
+                <img src="images/3.jpg" alt="Gallery Work 3" class="gallery-img">
+                <img src="images/4.jpg" alt="Gallery Work 4" class="gallery-img">
+                <img src="images/5.jpg" alt="Gallery Work 5" class="gallery-img">
+                <img src="images/6.jpg" alt="Gallery Work 6" class="gallery-img">
+                <img src="images/7.jpg" alt="Gallery Work 7" class="gallery-img">
+                <img src="images/8.jpg" alt="Gallery Work 8" class="gallery-img">
+                <img src="images/9.jpg" alt="Gallery Work 9" class="gallery-img">
+                <img src="images/10.jpg" alt="Gallery Work 10" class="gallery-img">
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Career Trajectory</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Core Gateway College, Inc.</h3>
+                    <p><strong>Computer Science Instructor II & IT Support (2023 - 2026)</strong></p>
+                    <p>Delivered advanced CS curriculum, managed Manychat automation for marketing, and provided tier-1/tier-2 hardware and network troubleshooting.</p>
+                </div>
+                <div class="card">
+                    <h3>Care&Joy Printing Shop</h3>
+                    <p><strong>Graphic Artist (2020 - 2021)</strong></p>
+                    <p>Designed commercial marketing materials, managed high-volume print specifications, and ensured modern layout aesthetics.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Establish Comms</h2>
+            <div class="card" style="text-align: center;">
+                <p></p><br>
+                <p><strong>Email:</strong> <a href="mailto:eugenioiromanjuan@gmail.com">eugenioiromanjuan@gmail.com</a></p>
+                <p><strong>Mobile:</strong> 09565970762</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Roman Juan Gamboa Eugenio I. All systems nominal.</p>
+    </footer>
+
+    <script>
+        // --- Theme Toggle Logic ---
+        const themeBtn = document.getElementById('theme-btn');
+        const body = document.body;
+
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            
+            // Switch the icon
+            if (body.classList.contains('light-theme')) {
+                themeBtn.textContent = '🌙'; 
+            } else {
+                themeBtn.textContent = '☀️'; 
+            }
+        });
+
+        // --- Interactive Glowing Cursor Logic ---
+        const cursor = document.getElementById('cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Expand glow when hovering over clickable items and gallery images
+        const clickables = document.querySelectorAll('a, .expandable, .theme-toggle, .gallery-img');
+        clickables.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                cursor.style.width = '60px';
+                cursor.style.height = '60px';
+                
+                // Adjust glow color based on theme
+                if (body.classList.contains('light-theme')) {
+                    cursor.style.background = 'radial-gradient(circle, rgba(126, 34, 206, 0.4) 0%, rgba(126, 34, 206, 0) 70%)'; 
+                } else {
+                    cursor.style.background = 'radial-gradient(circle, rgba(138, 43, 226, 0.8) 0%, rgba(138, 43, 226, 0) 70%)'; 
+                }
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                
+                // Return to base glow color based on theme
+                if (body.classList.contains('light-theme')) {
+                    cursor.style.background = 'radial-gradient(circle, rgba(2, 132, 199, 0.4) 0%, rgba(2, 132, 199, 0) 70%)';
+                } else {
+                    cursor.style.background = 'radial-gradient(circle, rgba(0, 240, 255, 0.8) 0%, rgba(0, 240, 255, 0) 70%)'; 
+                }
+            });
+        });
+
+        // --- Toggle Expandable Cards function ---
+        function toggleCard(event, element) {
+            // Prevent the card from collapsing/expanding if the user is clicking the "Launch" button
+            if(event.target.tagName.toLowerCase() === 'a') {
+                return;
+            }
+            element.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
