@@ -503,7 +503,7 @@
         }
     </style>
 </head>
-<body>
+<body class="dark"> <!-- Default theme set to dark -->
     <div class="bg-animation"></div>
     <div class="particles" id="particles"></div>
     <div class="cursor-follower" id="cursorFollower"></div>
@@ -512,7 +512,7 @@
     <!-- LOADING OVERLAY -->
     <div id="loadingOverlay" class="loading-overlay">
         <div class="simple-loader"></div>
-        <div class="loader-text">SYSTEM READY</div>
+        <div class="loader-text">   </div>
     </div>
 
     <!-- Fixed Navigation -->
@@ -528,9 +528,8 @@
             <li><a href="#ref-section">References</a></li>
         </ul>
         <div class="nav-right">
-            <!-- Download button triggers direct file download -->
             <button id="downloadCVBtnNav" class="nav-btn"><i class="fas fa-download"></i>Download my CV</button>
-            <button id="themeToggleNav" class="nav-btn"><i class="fas fa-moon"></i> Dark</button>
+            <button id="themeToggleNav" class="nav-btn"><i class="fas fa-sun"></i> Light</button>
         </div>
     </nav>
 
@@ -594,10 +593,9 @@
             <div class="section-header" data-target="gallery"><h2><i class="fas fa-images"></i> Recent Projects Gallery</h2><i class="fas fa-chevron-up"></i></div>
             <div id="gallery" class="collapsible-content">
                 <div class="gallery-grid">
-                    <div class="gallery-item" data-expand="vesscore-media"><div class="gallery-img"><i class="fas fa-chart-line"></i></div><div class="gallery-caption"><h3>VESSCORE Tabulation <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Pageant & Contest Tabulation System</strong> – Real-time scoring, automated leaderboards.</p><div class="expandable-media" id="vesscore-media"><div class="media-thumb" data-src="https://picsum.photos/id/1/800/600"><img src="https://picsum.photos/id/1/200/150" alt="Screenshot 1"></div><div class="media-thumb" data-src="https://picsum.photos/id/2/800/600"><img src="https://picsum.photos/id/2/200/150" alt="Screenshot 2"></div><div class="media-thumb" data-src="https://picsum.photos/id/3/800/600"><img src="https://picsum.photos/id/3/200/150" alt="Screenshot 3"></div></div></div></div>
-                    <div class="gallery-item" data-expand="corehub-media"><div class="gallery-img"><i class="fas fa-users"></i></div><div class="gallery-caption"><h3>CORE HUB <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Student Social Media & Utility Platform</strong> – GWA calculator, mini-games, forums.</p><div class="expandable-media" id="corehub-media"><div class="media-thumb" data-src="https://picsum.photos/id/4/800/600"><img src="https://picsum.photos/id/4/200/150" alt="UI 1"></div><div class="media-thumb" data-src="https://picsum.photos/id/5/800/600"><img src="https://picsum.photos/id/5/200/150" alt="UI 2"></div><div class="media-thumb" data-src="https://picsum.photos/id/6/800/600"><img src="https://picsum.photos/id/6/200/150" alt="UI 3"></div></div></div></div>
-                    <div class="gallery-item" data-expand="quek-media"><div class="gallery-img"><i class="fas fa-ticket-alt"></i></div><div class="gallery-caption"><h3>Quek: Queueing Kiosk <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Award-Winning Queue System</strong> – Streamlined campus transactions.</p><div class="expandable-media" id="quek-media"><div class="media-thumb" data-src="https://picsum.photos/id/7/800/600"><img src="https://picsum.photos/id/7/200/150" alt="Kiosk 1"></div><div class="media-thumb" data-src="https://picsum.photos/id/8/800/600"><img src="https://picsum.photos/id/8/200/150" alt="Kiosk 2"></div><div class="media-thumb" data-src="https://picsum.photos/id/9/800/600"><img src="https://picsum.photos/id/9/200/150" alt="Kiosk 3"></div></div></div></div>
-                    <div class="gallery-item" data-expand="ams-media"><div class="gallery-img"><i class="fas fa-id-card"></i></div><div class="gallery-caption"><h3>AMS (Attendance Mgmt) <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>RFID Student ID Log System</strong> – Automated attendance, real-time reports.</p><div class="expandable-media" id="ams-media"><div class="media-thumb" data-src="https://picsum.photos/id/10/800/600"><img src="https://picsum.photos/id/10/200/150" alt="RFID 1"></div><div class="media-thumb" data-src="https://picsum.photos/id/11/800/600"><img src="https://picsum.photos/id/11/200/150" alt="RFID 2"></div><div class="media-thumb" data-src="https://picsum.photos/id/12/800/600"><img src="https://picsum.photos/id/12/200/150" alt="RFID 3"></div></div></div></div>
+                    <div class="gallery-item" data-expand="vesscore-media"><div class="gallery-img"><i class="fas fa-chart-line"></i></div><div class="gallery-caption"><h3>VESSCORE Tabulation <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Pageant & Contest Tabulation System</strong> – Real-time scoring, automated leaderboards.</p><div class="expandable-media" id="vesscore-media"><div class="media-thumb" data-src="images/t1.jpg"><img src="images/t1.jpg" alt="Screenshot 1"></div><div class="media-thumb" data-src="images/t2.jpg"><img src="images/t2.jpg" alt="Screenshot 2"></div><div class="media-thumb" data-src="images/t3.jpg"><img src="images/t3.jpg" alt="Screenshot 3"></div></div></div></div>
+                    <div class="gallery-item" data-expand="corehub-media"><div class="gallery-img"><i class="fas fa-users"></i></div><div class="gallery-caption"><h3>CORE HUB <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Student Social Media & Utility Platform</strong> – GWA calculator, mini-games, forums.</p><div class="expandable-media" id="corehub-media"><div class="media-thumb" data-src="images/c1.jpg"><img src="images/c1.jpg" alt="UI 1"></div><div class="media-thumb" data-src="images/c2.jpg"><img src="images/c2.jpg" alt="UI 2"></div><div class="media-thumb" data-src="images/c3.jpg"><img src="images/c3.jpg" alt="UI 3"></div></div></div></div>
+                    <div class="gallery-item" data-expand="quek-media"><div class="gallery-img"><i class="fas fa-ticket-alt"></i></div><div class="gallery-caption"><h3>Quek: Queueing Kiosk <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Award-Winning Queue System</strong> – Streamlined campus transactions.</p><div class="expandable-media" id="quek-media"><div class="media-thumb" data-src="images/q1.png"><img src="images/q1.png" alt="Kiosk 1"></div><div class="media-thumb" data-src="images/q2.jpg"><img src="images/q2.jpg" alt="Kiosk 2"></div><div class="media-thumb" data-src="images/q3.jpg"><img src="images/q3.jpg" alt="Kiosk 3"></div></div></div></div>
                 </div>
             </div>
         </div>
@@ -618,9 +616,9 @@
 
         <div id="ref-section" class="collapsible-section"><div class="section-header" data-target="ref"><h2><i class="fas fa-address-card"></i> References</h2><i class="fas fa-chevron-up"></i></div><div id="ref" class="collapsible-content"><div class="ref-list"><div class="ref-card"><i class="fas fa-user-tie"></i> <strong>Apple Grace Tacmo</strong><br>09557598635</div><div class="ref-card"><i class="fas fa-user-check"></i> <strong>Lovely R. Adluz</strong><br>09756456199</div><div class="ref-card"><i class="fas fa-chalkboard-user"></i> <strong>Danilo S. Vargas, PhD.</strong><br>09661808358</div></div></div></div>
 
-        <div class="collapsible-section"><div class="section-header" data-target="personal"><h2><i class="fas fa-user-circle"></i> Personal Details</h2><i class="fas fa-chevron-up"></i></div><div id="personal" class="collapsible-content"><div class="card"><p><i class="fas fa-info-circle"></i> Born Sept 09, 1995 | Single | Roman Catholic | 173cm / 80kg</p><p>Father: Roman Ferrer Eugenio | Mother: Anita Gamboa Eugenio</p></div></div></div>
+        <div class="collapsible-section"><div class="section-header" data-target="personal"><h2><i class="fas fa-user-circle"></i> Personal Details</h2><i class="fas fa-chevron-up"></i></div><div id="personal" class="collapsible-content"><div class="card"><p><i class="fas fa-info-circle"></i> Born Sept 09, 1995 | Single | Roman Catholic | 173cm / 80kg | Father: Roman Ferrer Eugenio | Mother: Anita Gamboa Eugenio</p></div></div></div>
 
-        <footer><p><i class="fas fa-microchip"></i> Futuristic interactive portfolio — fixed navigation | © 2026 Roman Juan G. Eugenio I</p></footer>
+        <footer><p><i class="fas fa-microchip"></i> Portfolio | © 2026 Roman Juan G. Eugenio I</p></footer>
     </div>
 
     <!-- Lightbox Modal -->
@@ -804,7 +802,7 @@
         }
         createParticles();
 
-        // Dark mode
+        // Dark mode - DEFAULT DARK (initialized with fallback)
         const themeToggleNav = document.getElementById('themeToggleNav');
         const body = document.body;
         function setTheme(theme) {
@@ -818,9 +816,18 @@
                 themeToggleNav.innerHTML = '<i class="fas fa-moon"></i> Dark';
             }
         }
-        const savedTheme = localStorage.getItem('theme');
-        savedTheme === 'dark' ? setTheme('dark') : setTheme('light');
-        themeToggleNav.addEventListener('click', () => { body.classList.contains('dark') ? setTheme('light') : setTheme('dark'); });
+        // First load: check localStorage, default to dark if none
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'light') {
+            setTheme('light');
+        } else {
+            // default dark (including null or 'dark')
+            setTheme('dark');
+        }
+        // Toggle button event
+        themeToggleNav.addEventListener('click', () => {
+            body.classList.contains('dark') ? setTheme('light') : setTheme('dark');
+        });
 
         // Fade-up observer
         const faders = document.querySelectorAll('.fade-up, .card, .gallery-item, .ref-card, .hobby-card, .contact-card');
