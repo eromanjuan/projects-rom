@@ -149,7 +149,7 @@
         body.dark .bg-animation::before { background: radial-gradient(circle at 30% 40%, rgba(96,165,250,0.15) 0%, rgba(139,92,246,0.1) 50%, transparent 80%); }
         body.dark .particle { background: rgba(96,165,250,0.25); }
         
-        /* === FUTURISTIC LOADING OVERLAY === */
+        /* === SIMPLE BINARY LOADING OVERLAY === */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -157,131 +157,65 @@
             width: 100%;
             height: 100%;
             background: var(--bg-body);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(8px);
             z-index: 10000;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            gap: 30px;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
+            gap: 24px;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
             font-family: 'Space Grotesk', monospace;
         }
-        .tech-loader {
+        .binary-loader {
             text-align: center;
-            width: 360px;
-            position: relative;
+            background: var(--bg-surface);
+            padding: 2rem 2.5rem;
+            border-radius: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.2);
+            min-width: 320px;
         }
-        .loader-holo-ring {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 25px;
-        }
-        .ring-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 20px var(--accent);
-            animation: pulseCore 1.2s infinite alternate;
-        }
-        .ring-glow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(96,165,250,0.6);
-            animation: rotateRing 3s linear infinite;
-        }
-        .ring-glow::before {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 50%;
-            border: 1px dashed rgba(96,165,250,0.7);
-            animation: spinDash 8s linear infinite;
-        }
-        @keyframes rotateRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes spinDash { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
-        @keyframes pulseCore {
-            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.6; }
-            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; box-shadow: 0 0 35px var(--accent); }
-        }
-        .loader-glitch-text {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            font-weight: 500;
-            color: var(--accent);
-            text-transform: uppercase;
-            background: linear-gradient(90deg, var(--accent), #a78bfa);
+        .binary-percent {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            font-family: 'Space Grotesk', 'Courier New', monospace;
+            background: linear-gradient(135deg, var(--accent), #a855f7);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 12px;
-            animation: textFlicker 2s infinite;
+            margin-bottom: 0.5rem;
         }
-        .loader-progress-bar {
+        .binary-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+        }
+        .simple-progress {
             width: 100%;
-            height: 3px;
-            background: rgba(96,165,250,0.2);
-            border-radius: 4px;
+            height: 4px;
+            background: rgba(59,130,246,0.2);
+            border-radius: 10px;
             overflow: hidden;
-            margin: 12px 0;
+            margin: 1rem 0;
         }
-        .loader-progress-fill {
+        .simple-progress-fill {
             width: 0%;
             height: 100%;
             background: linear-gradient(90deg, var(--accent), #c084fc);
-            border-radius: 4px;
-            box-shadow: 0 0 8px var(--accent);
-            animation: fillProgress 2.2s ease-out forwards;
+            border-radius: 10px;
+            transition: width 0.1s linear;
         }
-        @keyframes fillProgress {
-            0% { width: 0%; }
-            20% { width: 35%; }
-            60% { width: 75%; }
-            100% { width: 100%; }
-        }
-        .loader-stats {
-            font-family: 'Space Grotesk', monospace;
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            display: flex;
-            justify-content: space-between;
-            margin-top: 8px;
-        }
-        .loader-binary {
-            font-size: 0.68rem;
-            opacity: 0.9;
-            letter-spacing: 1px;
-            font-weight: 500;
-            background: rgba(96,165,250,0.1);
-            padding: 3px 6px;
-            border-radius: 6px;
+        .binary-status {
+            font-size: 0.8rem;
+            color: var(--accent);
             font-family: monospace;
-        }
-        .loader-binary span {
-            display: inline-block;
-            animation: binaryGlow 0.3s ease infinite alternate;
-        }
-        @keyframes binaryGlow {
-            0% { text-shadow: 0 0 0px var(--accent); opacity: 0.7; }
-            100% { text-shadow: 0 0 4px var(--accent); opacity: 1; }
-        }
-        @keyframes textFlicker {
-            0%, 100% { opacity: 0.9; letter-spacing: 2px; }
-            50% { opacity: 1; letter-spacing: 4px; text-shadow: 0 0 3px cyan; }
+            margin-top: 0.8rem;
+            opacity: 0.8;
         }
         .hidden-overlay { opacity: 0; visibility: hidden; pointer-events: none; }
         
@@ -580,7 +514,6 @@
         }
         .close-lightbox:hover { background: var(--accent); transform: scale(1.1); }
         
-        /* Project external link style - added without deleting anything */
         .project-link {
             display: inline-flex;
             align-items: center;
@@ -616,6 +549,8 @@
             .section-header h2 { font-size: 1.2rem; }
             .typewriter-name { font-size: 1.6rem; }
             .profile-img { width: 120px; height: 120px; }
+            .binary-percent { font-size: 2.2rem; }
+            .binary-loader { padding: 1.5rem; min-width: 280px; }
         }
     </style>
 </head>
@@ -624,22 +559,19 @@
     <div class="particles" id="particles"></div>
     <div class="cursor-follower" id="cursorFollower"></div>
     <div class="ripple-container" id="rippleContainer"></div>
+    
+    <!-- SIMPLE BINARY LOADING OVERLAY -->
     <div id="loadingOverlay" class="loading-overlay">
-        <div class="tech-loader">
-            <div class="loader-holo-ring">
-                <div class="ring-glow"></div>
-                <div class="ring-core"></div>
+        <div class="binary-loader">
+            <div class="binary-percent" id="binaryPercentDisplay">00000000</div>
+            <div class="binary-label">INITIALIZING SYSTEM</div>
+            <div class="simple-progress">
+                <div class="simple-progress-fill" id="simpleProgressFill"></div>
             </div>
-            <div class="loader-glitch-text"> RJGE | Portfolio</div>
-            <div class="loader-progress-bar"><div class="loader-progress-fill"></div></div>
-            <div class="loader-stats">
-                <span class="loader-binary" id="binaryLeft">01010010 01001111</span>
-                <span>LOADING CORE</span>
-                <span class="loader-binary" id="binaryRight">01001101 01000001</span>
-            </div>
-            <div style="font-size:0.7rem; margin-top: 15px; letter-spacing:1px;"><span id="loadingPercentage">0</span>% &nbsp;|&nbsp; INITIALIZING MODULES</div>
+            <div class="binary-status" id="binaryStatusText">LOADING MODULES</div>
         </div>
     </div>
+    
     <nav class="fixed-nav">
         <div class="nav-logo"><a href="#">E. ROMANJUAN</a></div>
         <ul class="nav-links">
@@ -699,11 +631,8 @@
             <div class="section-header" data-target="gallery"><h2><i class="fas fa-images"></i> Recent Projects Gallery</h2><i class="fas fa-chevron-up"></i></div>
             <div id="gallery" class="collapsible-content">
                 <div class="gallery-grid">
-                    <!-- VESSCORE Project with external link -->
                     <div class="gallery-item" data-expand="vesscore-media"><div class="gallery-img"><i class="fas fa-chart-line"></i></div><div class="gallery-caption"><h3>VESSCORE Tabulation <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Pageant & Contest Tabulation OOO System</strong> – Real-time scoring, automated leaderboards.</p><a href="https://corehub-nine.vercel.app/vesscore.html" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Live Demo: VESSCORE</a><div class="expandable-media" id="vesscore-media"><div class="media-thumb" data-src="images/t1.gif"><img src="images/t1.gif" alt="Screenshot 1"></div><div class="media-thumb" data-src="images/t2.jpg"><img src="images/t2.jpg" alt="Screenshot 2"></div><div class="media-thumb" data-src="images/t3.jpg"><img src="images/t3.jpg" alt="Screenshot 3"></div></div></div></div>
-                    <!-- CORE HUB Project with external link -->
                     <div class="gallery-item" data-expand="corehub-media"><div class="gallery-img"><i class="fas fa-users"></i></div><div class="gallery-caption"><h3>CORE HUB <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Student Social Media & Utility Platform</strong> – GWA calculator, mini-games, forums.</p><a href="https://mysundayproject-50d65.firebaseapp.com/" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Visit CORE HUB Platform</a><div class="expandable-media" id="corehub-media"><div class="media-thumb" data-src="images/c1.gif"><img src="images/c1.gif" alt="UI 1"></div><div class="media-thumb" data-src="images/c2.gif"><img src="images/c2.gif" alt="UI 2"></div><div class="media-thumb" data-src="images/c3.gif"><img src="images/c3.gif" alt="UI 3"></div></div></div></div>
-                    <!-- Quek Project with external link -->
                     <div class="gallery-item" data-expand="quek-media"><div class="gallery-img"><i class="fas fa-ticket-alt"></i></div><div class="gallery-caption"><h3>Quek: Queueing Kiosk <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Award-Winning Queue System</strong> – Streamlined campus transactions.</p><a href="https://quek.cgci.edu.ph/index.php" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Access Quek System</a><div class="expandable-media" id="quek-media"><div class="media-thumb" data-src="images/q1.png"><img src="images/q1.png" alt="Kiosk 1"></div><div class="media-thumb" data-src="images/q2.gif"><img src="images/q2.gif" alt="Kiosk 2"></div><div class="media-thumb" data-src="images/q3.gif"><img src="images/q3.gif" alt="Kiosk 3"></div></div></div></div>
                 </div>
             </div>
@@ -729,32 +658,67 @@
         <div class="lightbox-content" id="lightboxContent"></div>
     </div>
     <script>
-        // ========== BINARY NAME RANDOMIZER (from full name) ==========
-        const fullNameRaw = "ROMAN JUAN G. EUGENIO I";
-        let fullBinaryArray = [];
-        for (let i = 0; i < fullNameRaw.length; i++) {
-            let bin = fullNameRaw.charCodeAt(i).toString(2).padStart(8, '0');
-            fullBinaryArray.push(bin);
-        }
-        let binaryPointer = 0;
-        function getRandomBinarySegment() {
-            let seg = [];
-            for (let i = 0; i < 2; i++) {
-                seg.push(fullBinaryArray[binaryPointer % fullBinaryArray.length]);
-                binaryPointer++;
-            }
-            return seg.join(' ');
-        }
-        const leftSpan = document.getElementById('binaryLeft');
-        const rightSpan = document.getElementById('binaryRight');
-        if (leftSpan && rightSpan) {
-            setInterval(() => {
-                leftSpan.innerHTML = `<span>${getRandomBinarySegment()}</span>`;
-                rightSpan.innerHTML = `<span>${getRandomBinarySegment()}</span>`;
-            }, 220);
+        // ========== SIMPLE BINARY LOADING 1-100% ==========
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const mainContent = document.getElementById('mainContent');
+        const binaryDisplay = document.getElementById('binaryPercentDisplay');
+        const progressFill = document.getElementById('simpleProgressFill');
+        const statusText = document.getElementById('binaryStatusText');
+        
+        let percent = 0;
+        const messages = ["FETCHING DATA", "PARSING BINARY", "LOADING MODULES", "OPTIMIZING", "ALMOST DONE", "COMPLETING"];
+        let msgIndex = 0;
+        
+        function toBinary8bit(num) {
+            return num.toString(2).padStart(8, '0');
         }
         
-        // ========== DROPLET SOUND ==========
+        const interval = setInterval(() => {
+            if (percent < 100) {
+                percent += Math.floor(Math.random() * 6) + 2;
+                if (percent > 100) percent = 100;
+                // Update binary display
+                binaryDisplay.textContent = toBinary8bit(percent);
+                // Update progress bar
+                progressFill.style.width = percent + '%';
+                // Update status message occasionally
+                if (percent % 25 === 0 && percent < 100) {
+                    statusText.textContent = messages[msgIndex % messages.length];
+                    msgIndex++;
+                }
+                if (percent === 100) {
+                    statusText.textContent = "SYSTEM READY";
+                    clearInterval(interval);
+                    setTimeout(hideLoader, 400);
+                }
+            } else {
+                clearInterval(interval);
+            }
+        }, 70);
+        
+        function hideLoader() {
+            if (loadingOverlay && !loadingOverlay.classList.contains('hidden-overlay')) {
+                loadingOverlay.classList.add('hidden-overlay');
+                if (mainContent) mainContent.style.opacity = '1';
+                setTimeout(() => {
+                    if (loadingOverlay) loadingOverlay.style.display = 'none';
+                }, 500);
+            }
+        }
+        // fallback: ensure loader disappears after max 4s
+        setTimeout(() => {
+            if (percent < 100) {
+                percent = 100;
+                binaryDisplay.textContent = toBinary8bit(100);
+                progressFill.style.width = '100%';
+                statusText.textContent = "SYSTEM READY";
+                clearInterval(interval);
+                hideLoader();
+            }
+        }, 4200);
+        window.addEventListener('load', () => setTimeout(() => { if (percent < 100) { percent = 100; binaryDisplay.textContent = toBinary8bit(100); progressFill.style.width = '100%'; hideLoader(); } }, 3000));
+        
+        // ========== DROPLET SOUND (preserved) ==========
         let audioCtx = null, audioInitialized = false;
         function initAudio() { if (audioCtx) return Promise.resolve(audioCtx); audioCtx = new (window.AudioContext || window.webkitAudioContext)(); return audioCtx.resume(); }
         function playDroplet() {
@@ -787,22 +751,7 @@
         document.addEventListener('click', (e) => { if (!audioInitialized) { initAudio().then(() => { audioInitialized = true; playDroplet(); }).catch(()=>{}); } else playDroplet(); });
         document.addEventListener('touchstart', () => { if (!audioInitialized) { initAudio().then(() => { audioInitialized = true; playDroplet(); }).catch(()=>{}); } else playDroplet(); });
         
-        // ========== LOADING HIDE ==========
-        const overlay = document.getElementById('loadingOverlay');
-        const mainDiv = document.getElementById('mainContent');
-        let percentVal = 0;
-        const percentSpanLoad = document.getElementById('loadingPercentage');
-        if (percentSpanLoad) {
-            const interval = setInterval(() => {
-                if (percentVal < 100) { percentVal += Math.floor(Math.random() * 9) + 2; if (percentVal > 100) percentVal = 100; percentSpanLoad.innerText = percentVal; }
-                else clearInterval(interval);
-            }, 110);
-        }
-        function hideLoader() { if (overlay && !overlay.classList.contains('hidden-overlay')) { overlay.classList.add('hidden-overlay'); if (mainDiv) mainDiv.style.opacity = '1'; setTimeout(() => { if (overlay) overlay.style.display = 'none'; }, 500); } }
-        setTimeout(hideLoader, 2400);
-        window.addEventListener('load', () => setTimeout(hideLoader, 10000));
-        
-        // ========== ALL ORIGINAL SCRIPTS (preserved) ==========
+        // ========== ALL ORIGINAL SCRIPTS (preserved except removed binary randomizer) ==========
         function downloadCV() { const a = document.createElement('a'); a.href = 'file/EUGENIO_ROMANJUAN_CV.pdf'; a.download = 'EUGENIO_ROMANJUAN_CV.pdf'; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
         document.getElementById('downloadCVBtnNav')?.addEventListener('click', downloadCV);
         const lightboxModal = document.getElementById('lightboxModal'), lightboxContentDiv = document.getElementById('lightboxContent');
