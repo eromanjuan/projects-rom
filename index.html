@@ -579,6 +579,38 @@
             transition: 0.2s;
         }
         .close-lightbox:hover { background: var(--accent); transform: scale(1.1); }
+        
+        /* Project external link style - added without deleting anything */
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .project-link:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(59,130,246,0.3);
+        }
+        body.dark .project-link {
+            background: #3b82f6;
+            box-shadow: 0 2px 8px rgba(96,165,250,0.3);
+        }
+        body.dark .project-link:hover {
+            background: #2563eb;
+        }
         @media (max-width: 768px) {
             .hero { flex-direction: column; text-align: center; }
             .section-header h2 { font-size: 1.2rem; }
@@ -598,7 +630,7 @@
                 <div class="ring-glow"></div>
                 <div class="ring-core"></div>
             </div>
-            <div class="loader-glitch-text"></ RJGE | Portfolio></div>
+            <div class="loader-glitch-text"> RJGE | Portfolio</div>
             <div class="loader-progress-bar"><div class="loader-progress-fill"></div></div>
             <div class="loader-stats">
                 <span class="loader-binary" id="binaryLeft">01010010 01001111</span>
@@ -667,9 +699,12 @@
             <div class="section-header" data-target="gallery"><h2><i class="fas fa-images"></i> Recent Projects Gallery</h2><i class="fas fa-chevron-up"></i></div>
             <div id="gallery" class="collapsible-content">
                 <div class="gallery-grid">
-                    <div class="gallery-item" data-expand="vesscore-media"><div class="gallery-img"><i class="fas fa-chart-line"></i></div><div class="gallery-caption"><h3>VESSCORE Tabulation <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Pageant & Contest Tabulation OOO System</strong> – Real-time scoring, automated leaderboards.</p><div class="expandable-media" id="vesscore-media"><div class="media-thumb" data-src="images/t1.gif"><img src="images/t1.gif" alt="Screenshot 1"></div><div class="media-thumb" data-src="images/t2.jpg"><img src="images/t2.jpg" alt="Screenshot 2"></div><div class="media-thumb" data-src="images/t3.jpg"><img src="images/t3.jpg" alt="Screenshot 3"></div></div></div></div>
-                    <div class="gallery-item" data-expand="corehub-media"><div class="gallery-img"><i class="fas fa-users"></i></div><div class="gallery-caption"><h3>CORE HUB <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Student Social Media & Utility Platform</strong> – GWA calculator, mini-games, forums.</p><div class="expandable-media" id="corehub-media"><div class="media-thumb" data-src="images/c1.gif"><img src="images/c1.gif" alt="UI 1"></div><div class="media-thumb" data-src="images/c2.gif"><img src="images/c2.gif" alt="UI 2"></div><div class="media-thumb" data-src="images/c3.gif"><img src="images/c3.gif" alt="UI 3"></div></div></div></div>
-                    <div class="gallery-item" data-expand="quek-media"><div class="gallery-img"><i class="fas fa-ticket-alt"></i></div><div class="gallery-caption"><h3>Quek: Queueing Kiosk <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Award-Winning Queue System</strong> – Streamlined campus transactions.</p><div class="expandable-media" id="quek-media"><div class="media-thumb" data-src="images/q1.png"><img src="images/q1.png" alt="Kiosk 1"></div><div class="media-thumb" data-src="images/q2.gif"><img src="images/q2.gif" alt="Kiosk 2"></div><div class="media-thumb" data-src="images/q3.gif"><img src="images/q3.gif" alt="Kiosk 3"></div></div></div></div>
+                    <!-- VESSCORE Project with external link -->
+                    <div class="gallery-item" data-expand="vesscore-media"><div class="gallery-img"><i class="fas fa-chart-line"></i></div><div class="gallery-caption"><h3>VESSCORE Tabulation <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Pageant & Contest Tabulation OOO System</strong> – Real-time scoring, automated leaderboards.</p><a href="https://corehub-nine.vercel.app/vesscore.html" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Live Demo: VESSCORE</a><div class="expandable-media" id="vesscore-media"><div class="media-thumb" data-src="images/t1.gif"><img src="images/t1.gif" alt="Screenshot 1"></div><div class="media-thumb" data-src="images/t2.jpg"><img src="images/t2.jpg" alt="Screenshot 2"></div><div class="media-thumb" data-src="images/t3.jpg"><img src="images/t3.jpg" alt="Screenshot 3"></div></div></div></div>
+                    <!-- CORE HUB Project with external link -->
+                    <div class="gallery-item" data-expand="corehub-media"><div class="gallery-img"><i class="fas fa-users"></i></div><div class="gallery-caption"><h3>CORE HUB <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Student Social Media & Utility Platform</strong> – GWA calculator, mini-games, forums.</p><a href="https://mysundayproject-50d65.firebaseapp.com/" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Visit CORE HUB Platform</a><div class="expandable-media" id="corehub-media"><div class="media-thumb" data-src="images/c1.gif"><img src="images/c1.gif" alt="UI 1"></div><div class="media-thumb" data-src="images/c2.gif"><img src="images/c2.gif" alt="UI 2"></div><div class="media-thumb" data-src="images/c3.gif"><img src="images/c3.gif" alt="UI 3"></div></div></div></div>
+                    <!-- Quek Project with external link -->
+                    <div class="gallery-item" data-expand="quek-media"><div class="gallery-img"><i class="fas fa-ticket-alt"></i></div><div class="gallery-caption"><h3>Quek: Queueing Kiosk <span class="expand-icon"><i class="fas fa-chevron-down"></i></span></h3><p><strong>Award-Winning Queue System</strong> – Streamlined campus transactions.</p><a href="https://quek.cgci.edu.ph/index.php" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Access Quek System</a><div class="expandable-media" id="quek-media"><div class="media-thumb" data-src="images/q1.png"><img src="images/q1.png" alt="Kiosk 1"></div><div class="media-thumb" data-src="images/q2.gif"><img src="images/q2.gif" alt="Kiosk 2"></div><div class="media-thumb" data-src="images/q3.gif"><img src="images/q3.gif" alt="Kiosk 3"></div></div></div></div>
                 </div>
             </div>
         </div>
@@ -776,7 +811,7 @@
         window.closeLightbox = closeLightbox;
         function bindMediaThumbs() { document.querySelectorAll('.media-thumb').forEach(thumb => { thumb.style.cursor = 'pointer'; thumb.removeEventListener('click', thumb.clickHandler); const handler = (e) => { e.stopPropagation(); const src = thumb.getAttribute('data-src'); const type = thumb.getAttribute('data-type'); if (src) openLightbox(src, type); }; thumb.addEventListener('click', handler); thumb.clickHandler = handler; }); }
         document.querySelectorAll('.collapsible-section').forEach(section => { const header = section.querySelector('.section-header'); const content = section.querySelector('.collapsible-content'); const icon = header.querySelector('i:last-child'); header.addEventListener('click', (e) => { e.stopPropagation(); if (content.classList.contains('collapsed')) { content.classList.remove('collapsed'); icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } else { content.classList.add('collapsed'); icon.classList.remove('fa-chevron-up'); icon.classList.add('fa-chevron-down'); } }); });
-        function setupExpandable(selector, attr) { document.querySelectorAll(selector).forEach(card => { const target = card.getAttribute(attr); if (target) { const expandDiv = document.getElementById(target); const iconSpan = card.querySelector('.expand-icon i'); card.addEventListener('click', (e) => { if (e.target.closest('.media-thumb')) return; e.stopPropagation(); if (expandDiv) { expandDiv.classList.toggle('show'); if (iconSpan) { if (expandDiv.classList.contains('show')) { iconSpan.classList.remove('fa-chevron-down'); iconSpan.classList.add('fa-chevron-up'); } else { iconSpan.classList.remove('fa-chevron-up'); iconSpan.classList.add('fa-chevron-down'); } } bindMediaThumbs(); } }); } }); }
+        function setupExpandable(selector, attr) { document.querySelectorAll(selector).forEach(card => { const target = card.getAttribute(attr); if (target) { const expandDiv = document.getElementById(target); const iconSpan = card.querySelector('.expand-icon i'); card.addEventListener('click', (e) => { if (e.target.closest('.media-thumb') || e.target.closest('.project-link')) return; e.stopPropagation(); if (expandDiv) { expandDiv.classList.toggle('show'); if (iconSpan) { if (expandDiv.classList.contains('show')) { iconSpan.classList.remove('fa-chevron-down'); iconSpan.classList.add('fa-chevron-up'); } else { iconSpan.classList.remove('fa-chevron-up'); iconSpan.classList.add('fa-chevron-down'); } } bindMediaThumbs(); } }); } }); }
         setupExpandable('.hobby-card', 'data-expand'); setupExpandable('.gallery-item', 'data-expand');
         document.getElementById('phoneCard')?.addEventListener('click', () => { if (confirm("📞 Call +63 956 597 0762?")) window.location.href = "tel:+639565970762"; });
         const cursorDiv = document.getElementById('cursorFollower'); if (cursorDiv) { document.addEventListener('mousemove', (e) => { cursorDiv.style.left = e.clientX + 'px'; cursorDiv.style.top = e.clientY + 'px'; }); const interact = document.querySelectorAll('button, .card, .gallery-item, .section-header, .hobby-card, .contact-card, .media-thumb, .nav-links a, .nav-btn'); interact.forEach(el => { el.addEventListener('mouseenter', () => { cursorDiv.style.width = '48px'; cursorDiv.style.height = '48px'; cursorDiv.style.backgroundColor = 'rgba(59,130,246,0.35)'; }); el.addEventListener('mouseleave', () => { cursorDiv.style.width = '32px'; cursorDiv.style.height = '32px'; cursorDiv.style.backgroundColor = 'rgba(59,130,246,0.25)'; }); }); }
